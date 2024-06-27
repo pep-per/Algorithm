@@ -27,7 +27,6 @@ void combination(int idx, vector<int> nums, vector<int> comb) {
         return;
     }
     for (int i = idx+1; i < nums.size(); i++) {
-        cout << nums[i] << endl;
         comb.push_back(nums[i]);
         combination(i, nums, comb);
         comb.pop_back();
