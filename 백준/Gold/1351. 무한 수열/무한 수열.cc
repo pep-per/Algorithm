@@ -21,7 +21,6 @@ int main() {
   cin >> n >> p >> q;
 
   a[0] = 1;
-  a[1] = 2;
   dfs(n);
   cout << a[n] << '\n';
   return 0;
