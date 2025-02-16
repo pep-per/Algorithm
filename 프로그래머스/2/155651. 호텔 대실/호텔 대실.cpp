@@ -11,7 +11,9 @@ int stotime(string str) {
     istringstream iss(str);
     int start, end;
     char c;
-    iss >> start >> c >> end;
+    iss >> start;
+    iss >> c;
+    iss >> end;
     return start * 60 + end;
 }
 
@@ -29,19 +31,18 @@ int solution(vector<vector<string>> book_time) {
     int answer = 0;
     for (auto &booking : book_time) {
 
-        bool isAssigned = false;
+        isAssigned = false;
         int i = 0;
-        while (i < rooms.size()) {
-            int end = stotime(rooms[i][rooms[i].size() - 1]) + 10;
-            if (end <= stotime(booking[0])) {
+        while (i++ < rooms.size()) {
+            int end = stotime(room[i].end()) + 10;
+            if (end + 10 <= stotime(booking[0])) {
                 isAssigned = true;
-                rooms[i].push_back(booking[1]);
-                break;
+                room[i].push_back(booking[1]));
             }
-            i++;
         }
         if (!isAssigned)
-            rooms.push_back({booking[1]});
+            rooms.push_back(booking[1]);
     }
+
     return rooms.size();
 }
